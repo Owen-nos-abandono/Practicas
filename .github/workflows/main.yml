@@ -10,6 +10,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./files
+
     strategy:
       matrix:
         node-version: [22.x, 18.x]
@@ -25,7 +29,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run Jest tests
+      - name: Run tests
         run: npm test
